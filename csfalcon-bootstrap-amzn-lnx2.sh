@@ -35,9 +35,9 @@ then
    cd /var/tmp
    wget -O get-sensor https://raw.githubusercontent.com/jshcodes/stuff/main/cssensor_download.sh
    chmod 755 get-sensor
-   export CS_FALCON_CLIENT_ID=$CLIENT_ID
-   export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
-   ./get-sensor $OS_NAME $OS_VERSION .
+   # export CS_FALCON_CLIENT_ID=$CLIENT_ID
+   # export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
+   ./get-sensor $OS_NAME $OS_VERSION . $CLIENT_ID $CLIENT_SECRET
    rpm -ivh --nodeps sensor.rpm
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    systemctl restart falcon-sensor

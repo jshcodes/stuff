@@ -47,14 +47,14 @@ if [ "$1" = "-h" ]; then
     exit
 fi
 
-# if [ -z "$4" ]
-# then
-#     CS_FALCON_CLIENT_ID=$4
-# fi
-# if [ -z "$5" ]
-# then
-#     CS_FALCON_CLIENT_SECRET=$5
-# fi
+if ! [ -z "$4" ]
+then
+    CS_FALCON_CLIENT_ID=$4
+fi
+if ! [ -z "$5" ]
+then
+    CS_FALCON_CLIENT_SECRET=$5
+fi
 
 CS_FALCON_OAUTH_TOKEN=${CS_FALCON_OAUTH_TOKEN}
 if [ -z "$CS_FALCON_OAUTH_TOKEN" ] && [ -z "$CS_FALCON_CLIENT_ID" ] && [ -z "$CS_FALCON_CLIENT_SECRET" ]; then
