@@ -49,7 +49,7 @@ then
    rm sensor.rpm
 else
    echo "Invalid attributes. Check syntax and try again."
-   echo "csfalcon-bootstrap-amzn-lnx2.sh --client_id=(CLIENT_ID) --client_secret=(CLIENT_SECRET) --cid=(CID) --os=(OS_NAME) { --osver=(OS_VERSION) }"
+   echo "csfalcon-bootstrap-centos.sh --client_id=(CLIENT_ID) --client_secret=(CLIENT_SECRET) --cid=(CID) --os=(OS_NAME) { --osver=(OS_VERSION) }"
 fi
 
 exit
