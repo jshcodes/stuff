@@ -61,6 +61,21 @@ then
             fi
             ;;
 
+        RHEL )
+            cd /var/tmp
+            curl -o csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
+            chmod 755 csfalcon_bootstrap
+            if [[ "$OS_VERSION" == *7* ]]
+            then
+                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=7
+            elif [[ "$OS_VERSION" == *6* ]]
+            then
+                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=6
+            else
+                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=8
+            fi
+            ;;
+
     esac
     rm csfalcon_bootstrap
 fi
