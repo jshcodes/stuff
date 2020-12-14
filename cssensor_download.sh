@@ -126,7 +126,7 @@ if [[ $jsonResult == *"denied"* ]]; then
     echoRed "Invalid Access Token"
     exit 1
 fi
-echo $jsonResult
+#echo $jsonResult
 sha_list=$(echo "$jsonResult" | jsonValue "sha256")
 if [ -z "$sha_list" ]; then
     echoRed "No sensor found for with OS Name: $OS_NAME"
