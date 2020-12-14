@@ -53,7 +53,7 @@ then
 
         CentOS )
             cd /var/tmp
-            wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
+            curl -o csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
             chmod 755 csfalcon_bootstrap
             if [[ "$OS_VERSION" == *7* ]]
             then
