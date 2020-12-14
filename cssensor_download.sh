@@ -105,13 +105,7 @@ case "$OS_NAME" in
     Oracle )
         OS_NAME="RHEL/CentOS/Oracle"
         ;;
-    sles15 )
-        OS_NAME="SLES"
-        ;;
-    sles12 )
-        OS_NAME="SLES"
-        ;;
-    sles11 )
+    sles )
         OS_NAME="SLES"
         ;;
     amzn )
