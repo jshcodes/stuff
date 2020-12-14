@@ -49,7 +49,7 @@ then
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    service falcon-sensor restart
    rm get-sensor
-   rm sensor.rpm
+   rm sensor.deb
 else
    echo "Invalid attributes. Check syntax and try again."
    echo "csfalcon-bootstrap-centos.sh --client_id=(CLIENT_ID) --client_secret=(CLIENT_SECRET) --cid=(CID) --os=(OS_NAME) { --osver=(OS_VERSION) }"
