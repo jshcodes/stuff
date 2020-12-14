@@ -27,7 +27,7 @@ done
 
 RELEASE=$(cat /etc/*release)
 OS_NAME=$(echo $RELEASE | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
-OS_VERSION=$(echo $RELEASE | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
+OS_VERSION=$(echo $RELEASE | awk '{ print $2 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
 
 if [[ $PROCEED -eq 3 ]]
 then
