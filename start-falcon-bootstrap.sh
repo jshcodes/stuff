@@ -52,7 +52,7 @@ then
             wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-amzn-lnx2.sh
             chmod 755 csfalcon_bootstrap
             #TODO: Add arm detection
-            ./csfalcon_bootstrap --client_id=${var.falcon_client_id} --client_secret=${var.falcon_client_secret} --cid=${var.falcon_cid} --os=amzn --osver=2
+            ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLEINT_SECRET --cid=$CLIENT_CID --os=amzn --osver=2
             ;;
 
         CentOS )
@@ -61,7 +61,7 @@ then
             chmod 755 csfalcon_bootstrap
             if [[ "$OS_VERSION" == *7* ]]
             then
-                ./csfalcon_bootstrap --client_id=${var.falcon_client_id} --client_secret=${var.falcon_client_secret} --cid=${var.falcon_cid} --os=centos --osver=7
+                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=centos --osver=7
             fi
             ;;
 
