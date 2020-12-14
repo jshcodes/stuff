@@ -1,5 +1,5 @@
 #!/bin/bash
-# CrowdStrike Falcon Agent bootstrap - CentOS / RHEL / Oracle
+# CrowdStrike Falcon Agent bootstrap - SLES
 
 CLIENT_ID=""
 CLIENT_SECRET=""
@@ -42,7 +42,7 @@ then
    export CS_FALCON_CLIENT_ID=$CLIENT_ID
    export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
    ./get-sensor $OS_NAME $OS_VERSION .
-   yum -y install libnl
+   #yum -y install libnl
    rpm -ivh sensor.rpm
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    systemctl restart falcon-sensor
