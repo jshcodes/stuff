@@ -1,10 +1,6 @@
 #!/bin/bash
 # CrowdStrike Falcon Agent bootstrap - Amazon Linux
 
-CLIENT_ID=""
-CLIENT_SECRET=""
-CLIENT_CID=""
-OS_NAME=""
 OS_VERSION=""
 PROCEED=0
 for var in $*; do 

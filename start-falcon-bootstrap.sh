@@ -1,10 +1,5 @@
 #!/bin/bash
 
-CLIENT_ID=""
-CLIENT_SECRET=""
-CLIENT_CID=""
-OS_NAME=""
-OS_VERSION=""
 PROCEED=0
 for var in $*; do 
    if [[ "$var" == *--client_id=* ]]
