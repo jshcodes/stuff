@@ -61,7 +61,7 @@ then
             fi
             ;;
 
-        RHEL )
+        Red )
             cd /var/tmp
             curl -o csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
             chmod 755 csfalcon_bootstrap
