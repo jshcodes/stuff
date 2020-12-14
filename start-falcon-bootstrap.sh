@@ -75,6 +75,14 @@ then
                 ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=8
             fi
             ;;
+        
+        Ubuntu )
+            cd /var/tmp
+            wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-debian.sh
+            chmod 755 csfalcon_bootstrap
+            #TODO: Add arm / ubuntu version detection
+            ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=debian --osver=9
+            ;;
 
     esac
     rm csfalcon_bootstrap
