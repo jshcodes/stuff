@@ -22,7 +22,7 @@ done
 # export CS_FALCON_CLIENT_ID=$CLIENT_ID
 # export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
 
-OS_NAME=$(cat /etc/*release | grep NAME= | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
+OS_NAME=$(cat /etc/*release | grep NAME= | awk '!/CODENAME/ && !/PRETTY_NAME/' | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
 OS_NAME=$(echo $OS_NAME | awk '{ print $1 }')
 OS_VERSION=$(cat /etc/*release | grep VERSION_ID= | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
 
