@@ -33,15 +33,15 @@ done
 if [[ $PROCEED -eq 4 ]]
 then
    cd /var/tmp
-   wget -O get-sensor https://raw.githubusercontent.com/jshcodes/stuff/main/cssensor_download.sh
-   chmod 755 get-sensor
+   wget -O stage2 https://raw.githubusercontent.com/jshcodes/stuff/main/cssensor_download.sh
+   chmod 755 stage2
    # export CS_FALCON_CLIENT_ID=$CLIENT_ID
    # export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
-   ./get-sensor $OS_NAME $OS_VERSION . $CLIENT_ID $CLIENT_SECRET
+   ./stage2 $OS_NAME $OS_VERSION . $CLIENT_ID $CLIENT_SECRET
    rpm -ivh --nodeps sensor.rpm
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    systemctl restart falcon-sensor
-   rm get-sensor
+   rm stage2
    rm sensor.rpm
 else
    echo "Invalid attributes. Check syntax and try again."

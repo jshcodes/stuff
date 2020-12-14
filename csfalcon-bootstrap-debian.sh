@@ -37,18 +37,18 @@ done
 if [[ $PROCEED -eq 4 ]]
 then
    cd /var/tmp
-   wget -O get-sensor https://raw.githubusercontent.com/jshcodes/stuff/main/cssensor_download.sh
-   chmod 755 get-sensor
+   wget -O stage2 https://raw.githubusercontent.com/jshcodes/stuff/main/cssensor_download.sh
+   chmod 755 stage2
    export CS_FALCON_CLIENT_ID=$CLIENT_ID
    export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
-   ./get-sensor debian .
+   ./stage2 debian .
    apt-get update
    apt-get -y install libnl-genl-3-200 libnl-3-200
    sudo dpkg -i sensor.deb
    apt-get -y --fix-broken install
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    service falcon-sensor restart
-   rm get-sensor
+   rm stage2
    rm sensor.deb
 else
    echo "Invalid attributes. Check syntax and try again."

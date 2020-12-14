@@ -28,59 +28,59 @@ then
     case "$OS_NAME" in
         SLES )
             cd /var/tmp
-            curl -o csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-sles.sh
-            chmod 755 csfalcon_bootstrap
+            curl -o stage1 https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-sles.sh
+            chmod 755 stage1
             if [[ "$OS_VERSION" == *11* ]]
             then
-                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=11
+                ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=11
             elif [[ "$OS_VERSION" == *12* ]]
             then
-                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=12
+                ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=12
             else
-                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=15
+                ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=15
             fi
             ;;
         Amazon )
             cd /var/tmp
-            wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-amzn-lnx2.sh
-            chmod 755 csfalcon_bootstrap
+            wget -O stage1 https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-amzn-lnx2.sh
+            chmod 755 stage1
             #TODO: Add arm detection
-            ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=amzn --osver=2
+            ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=amzn --osver=2
             ;;
 
         CentOS )
             cd /var/tmp
-            curl -o csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
-            chmod 755 csfalcon_bootstrap
+            curl -o stage1 https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
+            chmod 755 stage1
             if [[ "$OS_VERSION" == *7* ]]
             then
-                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=centos --osver=7
+                ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=centos --osver=7
             fi
             ;;
 
         Red )
             cd /var/tmp
-            curl -o csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
-            chmod 755 csfalcon_bootstrap
+            curl -o stage1 https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
+            chmod 755 stage1
             if [[ "$OS_VERSION" == *7* ]]
             then
-                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=7
+                ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=7
             elif [[ "$OS_VERSION" == *6* ]]
             then
-                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=6
+                ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=6
             else
-                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=8
+                ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=8
             fi
             ;;
         
         Ubuntu )
             cd /var/tmp
-            wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-debian.sh
-            chmod 755 csfalcon_bootstrap
+            wget -O stage1 https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-debian.sh
+            chmod 755 stage1
             #TODO: Add arm / ubuntu version detection
-            ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=debian --osver=9
+            ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=debian --osver=9
             ;;
 
     esac
-    rm csfalcon_bootstrap
+    rm stage1
 fi
