@@ -41,7 +41,7 @@ then
    rpm -ivh --nodeps sensor.rpm
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    systemctl restart falcon-sensor
-   rm get-sensor
+   #rm get-sensor
    rm sensor.rpm
 else
    echo "Invalid attributes. Check syntax and try again."
