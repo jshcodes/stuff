@@ -47,36 +47,36 @@ if [ "$1" = "-h" ]; then
     exit
 fi
 
-if [ -z "$4" ]
-then
-    CS_FALCON_CLIENT_ID=$4
-fi
-if [ -z "$5" ]
-then
-    CS_FALCON_CLIENT_SECRET=$5
-fi
+# if [ -z "$4" ]
+# then
+#     CS_FALCON_CLIENT_ID=$4
+# fi
+# if [ -z "$5" ]
+# then
+#     CS_FALCON_CLIENT_SECRET=$5
+# fi
 
 CS_FALCON_OAUTH_TOKEN=${CS_FALCON_OAUTH_TOKEN}
-# if [ -z "$CS_FALCON_OAUTH_TOKEN" ] && [ -z "$CS_FALCON_CLIENT_ID" ] && [ -z "$CS_FALCON_CLIENT_SECRET" ]; then
-#     echoRed "Missing Falcon OAUTH Token or Client ID and Secret Environment Variable(s)"
-#     usage
-#     exit 1
-# elif [ -z "$CS_FALCON_OAUTH_TOKEN" ]; then
-if [ -z "$CS_FALCON_CLIENT_ID" ] || [ -z "$CS_FALCON_CLIENT_SECRET" ]; then
-    echoRed "If using CS_FALCON_CLIENT_ID and CS_FALCON_CLIENT_SECRET, both must be set."
+if [ -z "$CS_FALCON_OAUTH_TOKEN" ] && [ -z "$CS_FALCON_CLIENT_ID" ] && [ -z "$CS_FALCON_CLIENT_SECRET" ]; then
+    echoRed "Missing Falcon OAUTH Token or Client ID and Secret Environment Variable(s)"
+    usage
     exit 1
-else
-    # Let's get a token
-    tokenResult=$(curl -X POST -s -L "https://$CS_API_BASE/oauth2/token" \
-                    -H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
-                    -d "client_id=$CS_FALCON_CLIENT_ID&client_secret=$CS_FALCON_CLIENT_SECRET")
-    CS_FALCON_OAUTH_TOKEN=$(echo "$tokenResult" | jsonValue "access_token" | sed 's/ *$//g' | sed 's/^ *//g')
-    if [ -z "$CS_FALCON_OAUTH_TOKEN" ]; then
-        echoRed "Unable to retrieve oauth token from api"
+elif [ -z "$CS_FALCON_OAUTH_TOKEN" ]; then
+    if [ -z "$CS_FALCON_CLIENT_ID" ] || [ -z "$CS_FALCON_CLIENT_SECRET" ]; then
+        echoRed "If using CS_FALCON_CLIENT_ID and CS_FALCON_CLIENT_SECRET, both must be set."
         exit 1
+    else
+        # Let's get a token
+        tokenResult=$(curl -X POST -s -L "https://$CS_API_BASE/oauth2/token" \
+                        -H 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
+                        -d "client_id=$CS_FALCON_CLIENT_ID&client_secret=$CS_FALCON_CLIENT_SECRET")
+        CS_FALCON_OAUTH_TOKEN=$(echo "$tokenResult" | jsonValue "access_token" | sed 's/ *$//g' | sed 's/^ *//g')
+        if [ -z "$CS_FALCON_OAUTH_TOKEN" ]; then
+            echoRed "Unable to retrieve oauth token from api"
+            exit 1
+        fi
     fi
 fi
-# fi
 
 OS_NAME=$1
 OS_VERSION=$2
