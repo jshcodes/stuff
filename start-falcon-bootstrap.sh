@@ -48,7 +48,7 @@ then
             wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-amzn-lnx2.sh
             chmod 755 csfalcon_bootstrap
             #TODO: Add arm detection
-            ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLEINT_SECRET --cid=$CLIENT_CID --os=amzn --osver=2
+            ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=amzn --osver=2
             ;;
 
         CentOS )
