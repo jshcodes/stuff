@@ -43,9 +43,9 @@ then
    export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
    ./get-sensor debian .
    apt-get update
-   apt-get install libnl1 libnl-genl-3-200 libnl-3-200
+   apt-get --assume-yes install libnl1 libnl-genl-3-200 libnl-3-200
    sudo dpkg -i sensor.deb
-   apt-get --fix-broken install
+   apt-get --assume-yes --fix-broken install
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    service falcon-sensor restart
    rm get-sensor
