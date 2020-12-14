@@ -62,5 +62,5 @@ then
             ;;
 
     esac
-    rm csfalcon_bootstrap
+    #rm csfalcon_bootstrap
 fi
