@@ -37,7 +37,7 @@ done
 if [[ $PROCEED -eq 4 ]]
 then
    cd /var/tmp
-   wget -O get-sensor https://raw.githubusercontent.com/jshcodes/stuff/main/cssensor_download.sh
+   curl -o get-sensor https://raw.githubusercontent.com/jshcodes/stuff/main/cssensor_download.sh
    chmod 755 get-sensor
    export CS_FALCON_CLIENT_ID=$CLIENT_ID
    export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
