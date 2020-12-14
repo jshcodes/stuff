@@ -25,25 +25,46 @@ for var in $*; do
 done
 
 
-RELEASE=$(cat /etc/*release)
-OS_NAME=$(echo $RELEASE | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
-OS_VERSION=$(echo $RELEASE | awk '{ print $2 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
+
+OS_NAME=$(cat /etc/*release | grep NAME= | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
+OS_NAME=$(echo $OS_NAME | awk '{ print $1 }')
+OS_VERSION=$(cat /etc/*release | grep VERSION_ID= | awk '{ print $1 }' | awk -F'=' '{ print $2 }' | sed "s/\"//g")
 
 if [[ $PROCEED -eq 3 ]]
 then
     case "$OS_NAME" in
         SLES )
             cd /var/tmp
-            curl -o bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-sles.sh
-            chmod 755 bootstrap
-            if [[ "$OS_VERSION" == *12* ]]
+            curl -o csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-sles.sh
+            chmod 755 csfalcon_bootstrap
+            if [[ "$OS_VERSION" == *11* ]]
             then
-                ./bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=12
+                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=11
+            elif [[ "$OS_VERSION" == *12* ]]
+            then
+                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=12
             else
-                ./bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=15
+                ./csfalcon_bootstrap --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=15
+            fi
+            ;;
+        Amazon )
+            cd /var/tmp
+            wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-amzn-lnx2.sh
+            chmod 755 csfalcon_bootstrap
+            #TODO: Add arm detection
+            ./csfalcon_bootstrap --client_id=${var.falcon_client_id} --client_secret=${var.falcon_client_secret} --cid=${var.falcon_cid} --os=amzn --osver=2
+            ;;
+
+        CentOS )
+            cd /var/tmp
+            wget -O csfalcon_bootstrap https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-centos.sh
+            chmod 755 csfalcon_bootstrap
+            if [[ "$OS_VERSION" == *7* ]]
+            then
+                ./csfalcon_bootstrap --client_id=${var.falcon_client_id} --client_secret=${var.falcon_client_secret} --cid=${var.falcon_cid} --os=centos --osver=7
             fi
             ;;
 
     esac
-    rm bootstrap
+    rm csfalcon_bootstrap
 fi
