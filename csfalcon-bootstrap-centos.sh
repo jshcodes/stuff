@@ -1,5 +1,5 @@
 #!/bin/bash
-# CrowdStrike Falcon Agent bootstrap - Amazon Linux
+# CrowdStrike Falcon Agent bootstrap - CentOS / RHEL / Oracle
 
 CLIENT_ID=""
 CLIENT_SECRET=""
@@ -42,7 +42,7 @@ then
    export CS_FALCON_CLIENT_ID=$CLIENT_ID
    export CS_FALCON_CLIENT_SECRET=$CLIENT_SECRET
    ./get-sensor $OS_NAME $OS_VERSION .
-   rpm -ivh --nodeps sensor.rpm
+   rpm -ivh sensor.rpm
    /opt/CrowdStrike/falconctl -s -f --cid=$CLIENT_CID
    systemctl restart falcon-sensor
    rm get-sensor
