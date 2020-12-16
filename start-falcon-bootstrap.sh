@@ -67,6 +67,9 @@ then
                 ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=7
             elif [[ "$OS_VERSION" == *6* ]]
             then
+                rm stage1
+                curl -o stage1 https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-rhel6.sh
+                chmod 755 stage1
                 ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=6
             else
                 ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=rhel --osver=8
