@@ -38,6 +38,8 @@ then
             chmod 755 stage1
             if [[ "$OS_VERSION" == *11* ]]
             then
+                curl -o stage1 https://raw.githubusercontent.com/jshcodes/stuff/main/csfalcon-bootstrap-sles11.sh
+                chmod 755 stage1
                 ./stage1 --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET --cid=$CLIENT_CID --os=sles --osver=11
             elif [[ "$OS_VERSION" == *12* ]]
             then
