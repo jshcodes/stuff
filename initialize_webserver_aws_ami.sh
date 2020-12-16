@@ -1,5 +1,18 @@
 #!/bin/bash
 echo 'Starting'
+while getopts 't:' OPTION;
+do
+  case "$OPTION" in
+    t)
+      VICTIM="$OPTARG"
+      ;;
+
+    *) echo "usage: $0 [-t]" >&2
+       exit 1 ;;
+  esac
+done
+
+
 REGION=`curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}'`
 echo $REGION
 echo 'Configuring region'
@@ -21,6 +34,7 @@ echo "  jenkins:" >> docker-compose.yml
 #echo "    image: franklinjff/jenkins:version1" >> docker-compose.yml
 echo "    image: jharris10/jenkins:5" >> docker-compose.yml
 echo "    environment:" >> docker-compose.yml
+echo "      - VICTIM=$VICTIM">> docker-compose.yml
 echo "      JAVA_OPTS: \"-Djava.awt.headless=true\"" >> docker-compose.yml
 echo "      JAVA_OPTS: \"-Djenkins.install.runSetupWizard=false\"" >> docker-compose.yml
 echo "    ports:" >> docker-compose.yml
