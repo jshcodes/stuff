@@ -34,7 +34,7 @@ echo "  jenkins:" >> docker-compose.yml
 #echo "    image: franklinjff/jenkins:version1" >> docker-compose.yml
 echo "    image: jharris10/jenkins:5" >> docker-compose.yml
 echo "    environment:" >> docker-compose.yml
-echo "      - VICTIM=$VICTIM">> docker-compose.yml
+echo "      VICTIM: \"$VICTIM\"" >> docker-compose.yml
 echo "      JAVA_OPTS: \"-Djava.awt.headless=true\"" >> docker-compose.yml
 echo "      JAVA_OPTS: \"-Djenkins.install.runSetupWizard=false\"" >> docker-compose.yml
 echo "    ports:" >> docker-compose.yml
