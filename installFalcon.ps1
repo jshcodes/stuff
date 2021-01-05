@@ -251,7 +251,7 @@ process {
 
                 if ($CloudHash -eq $LocalHash) {
                     # Start installer
-                    $InstallerPID = (Start-Process -FilePath $InstallerPath -ArgumentList $InstallArguments -PassThru).id
+                    $InstallerPID = (Start-Process -FilePath $InstallerPath -ArgumentList $InstallParams -PassThru).id
 
                     if (Get-Process | Where-Object { $_.Id -eq $InstallerPID }) {
                         Add-Log -EntryType 'Information' -Message (
