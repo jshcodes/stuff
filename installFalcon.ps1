@@ -33,7 +33,7 @@ begin {
 )
 
     [string] $ApiClient = "$FalconClientId"
-    [string] $ApiSecret = "$FalconSecret"
+    [string] $ApiSecret = "$FalconClientSecret"
 
     ## 'Member CID' if working in MSSP or Parent/Child CID environments. Default: $null.
     [string] $MemberCID = $null
@@ -57,7 +57,7 @@ begin {
     # Installation parameters beyond '/install', '/quiet', '/noreboot' and 'CCID='. If no
     # additional parameters are required, input $null.
 
-    [string] $InstallParams = '/install CCID='${CCID}
+    [string] $InstallParams = '/install /quiet /norestart CCID='${FalconClientCID}
 
     # Input `$true` or `$false` to delete the script and/or installer after installation.
     [boolean] $DeleteInstaller = $true
