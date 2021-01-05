@@ -1,13 +1,22 @@
 <#
 .SYNOPSIS
-    Modified version of windows installer for sytems manager
+    Modified version of windows installer for AWS sytems manager
 .NOTES
-    Version:        1.5
-    Authors:        Justin Harris
+    Version:        1.6
+    Authors:        Justin Harris, Joshua Hiller
 
 #>
 [CmdletBinding()]
-param()
+param(
+    [Parameter(HelpMessage="Falcon API Client ID")]
+    [string]$FalconClientId = "",
+    [Parameter(HelpMessage="Falcon API Client Secret")]
+    [string]$FalconClientSecret = "",
+    [Parameter(HelpMessage="Falcon CID")]
+    [string]$FalconClientCID = "",
+    [Parameter(HelpMessage="Authorization Token")]
+    [string]$CSAuthToken = ""
+)
 begin {
     <# USER CONFIG ###############################################################################>
 
@@ -18,13 +27,13 @@ begin {
     , '/install'
     , '/quiet'
     , '/norestart'
-    , "CID=${SSM_CS_CCID}"
+    , "CID=$FalconClientCID"
     , 'ProvWaitTime=1200000'
-    , "ProvToken=${SSM_CS_AUTH_TOKEN}"
+    , "ProvToken=$CSAuthToken"
 )
 
-    [string] $ApiClient = "${FalconClientId}"
-    [string] $ApiSecret = "${FalconSecret}"
+    [string] $ApiClient = "$FalconClientId"
+    [string] $ApiSecret = "$FalconSecret"
 
     ## 'Member CID' if working in MSSP or Parent/Child CID environments. Default: $null.
     [string] $MemberCID = $null
