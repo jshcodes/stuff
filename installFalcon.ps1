@@ -57,7 +57,7 @@ begin {
     # Installation parameters beyond '/install', '/quiet', '/noreboot' and 'CCID='. If no
     # additional parameters are required, input $null.
 
-    [string] $InstallParams = "/install /quiet /norestart CCID=$FalconClientCID"
+    [string] $InstallParams = "/install /quiet /norestart CID=$FalconClientCID"
 
     # Input `$true` or `$false` to delete the script and/or installer after installation.
     [boolean] $DeleteInstaller = $true
