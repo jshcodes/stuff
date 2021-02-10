@@ -41,12 +41,12 @@ else
       echo "Executing command..."
       result=$(aws ssm send-command --instance-ids $INSTANCE\
        	--document-name "AWS-RunShellScript"\
-       	--parameters "commands=$CMD")
+       	--parameters "commands=$CMD" --region $REGION)
       cmdId=$(echo $result | jq -r .Command.CommandId)
       echo "Awaiting response..."
       sleep $WAIT
       aws ssm list-command-invocations --command-id $cmdId\
        	--query "CommandInvocations[*].CommandPlugins[*].Output[]"\
-        --details --output text
+        --details --output text --region $REGION
    fi
 fi
