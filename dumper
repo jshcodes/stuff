@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ "$#" -eq 1 ]
+then
+  INFILE=$1
+else
+  INFILE=describes.txt
+fi
+trap "echo Quitting!; exit;" SIGINT SIGTERM
+while IFS="" read -r p || [ -n "$p" ]
+  do
+    if [[ $p != *"#"* ]]
+      then
+        figlet -w 260 -f banner ${p:9}
+	CMD="aws ec2 $p --output json > ${p:9}.json"
+        eval $CMD
+      fi
+  done < $INFILE
