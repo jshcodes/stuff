@@ -38,7 +38,11 @@ print(json.dumps(response, indent=4))
 ```python
 FILENAME = "testfile.jpg"
 PAYLOAD = open(FILENAME, 'rb').read()
-response = falcon.command('UploadSampleV3', file_name="newfile.jpg", data=PAYLOAD, content_type="application/octet-stream")
+response = falcon.command('UploadSampleV3', 
+                          file_name="newfile.jpg",
+                          data=PAYLOAD,
+                          content_type="application/octet-stream"
+                          )
 sha = response["body"]["resources"][0]["sha256"]
 response = falcon.command("GetSampleV3", ids=sha)
 open('uberclass.jpg', 'wb').write(response)
