@@ -12,7 +12,6 @@ falcon = FalconUploads.Sample_Uploads(creds={
 ```
 ## Uber Class
 ```python
-import json
 from falconpy import api_complete as FalconSDK
 
 falcon = FalconSDK.APIHarness(creds={
