@@ -1,6 +1,7 @@
 # Authentication
 
 ## Service Class
+### Credential authentication
 ```python
 from falconpy import sample_uploads as FalconUploads
 
@@ -9,6 +10,36 @@ falcon = FalconUploads.Sample_Uploads(creds={
         "client_secret": falcon_client_secret
     }
 )
+```
+### Object authentication
+```python
+from falconpy import oauth2 as FalconAuth
+from falconpy import sample_uploads as FalconUploads
+
+auth = FalconAuth.OAuth2({
+        "client_id": falcon_client_id,
+        "client_secret": falcon_client_secret
+    }
+)
+
+falcon = FalconUploads.Sample_Uploads(auth_object=auth)
+```
+### Legacy authentication
+```python
+from falconpy import sample_uploads as FalconUploads
+
+auth = FalconAuth.OAuth2({
+        "client_id": falcon_client_id,
+        "client_secret": falcon_client_secret
+    }
+)
+try:
+    token = auth.token()['body']['access_token']
+except Exception:
+    token = False
+    
+if token:
+    falcon = FalconUploads.Sample_Uploads(access_token=token)
 ```
 ## Uber Class
 ```python
