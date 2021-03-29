@@ -3,7 +3,7 @@
 if type aws >/dev/null 2>&1; then
   echo "This is AWS"
   curl -o aws_count.py https://raw.githubusercontent.com/jshcodes/stuff/main/aws-cspm-benchmark.py
-  pip3 install tabulate
+  sudo pip3 install tabulate
   python3 aws_count.py
   rm aws_count.py
 fi
