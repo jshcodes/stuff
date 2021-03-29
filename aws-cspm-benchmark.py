@@ -21,7 +21,7 @@ include = ["all"]
 checks = [
     ["ec2", "Reservations", "describe_instances", "MaxResults", "1000", "ec2"],
     ["rds", "DBInstances", "describe_db_instances", "MaxRecords", "100", "rds"],
-    ["iam", "Roles", "list_roles", "MaxItems", "1000", "iam"],
+#    ["iam", "Roles", "list_roles", "MaxItems", "1000", "iam"],
     ["redshift", "Clusters", "describe_clusters", "MaxRecords", "100", "redshift"],
     ["elbv2", "LoadBalancers", "describe_load_balancers", "PageSize", "400", "lb"],
     ["ec2", "NatGateways", "describe_nat_gateways", "MaxResults", "1000", "natg"],
