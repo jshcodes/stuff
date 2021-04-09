@@ -108,7 +108,7 @@ begin {
                     }
                 }
                 # Make request and output result
-                $Response = Invoke-WebRequest @Param
+                $Response = Invoke-WebRequest @Param -UseBasicParsing
                 if ($Response.Content -and ($Param.Headers.Accept -eq 'application/json')) {
                     ConvertFrom-Json -InputObject $Response.Content
                 } elseif ($Response.Content) {
