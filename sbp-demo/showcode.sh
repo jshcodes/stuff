@@ -16,6 +16,9 @@ else
         agent-uninstall ) echo -e "\nSource code for $1\n"
             cat /usr/local/bin/$1
             ;;
+        all-agents ) echo -e "\nSource code for $1\n"
+            cat /usr/local/bin/$1
+            ;;
         connect ) echo -e "\nSource code for $1"
             cat /usr/local/bin/$1
             ;;
