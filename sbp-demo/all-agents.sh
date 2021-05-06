@@ -8,6 +8,7 @@ if [[ "$1" == "install" ]]
 then
     MODE="Install"
 elif [[ "$1" == "uninstall" ]]
+then
     MODE="Uninstall"
 else
     echo "Unrecognized command"
