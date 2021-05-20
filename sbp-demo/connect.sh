@@ -10,19 +10,19 @@ fi
 if [[ "$ACTION" == "help" ]]
 then
     echo "connect {target}"
-    echo "Available targets: linux1, linux2, windows1, windows2"
+    echo "Available targets: linux, windows"
+elif [[ "$ACTION" == "linux" ]]
+then
+    ssh -i $SSHKEY -o StrictHostKeyChecking=no ec2-user@$LINUX_1 $2 $3 $4
 elif [[ "$ACTION" == "linux1" ]]
 then
     ssh -i $SSHKEY -o StrictHostKeyChecking=no ec2-user@$LINUX_1 $2 $3 $4
-elif [[ "$ACTION" == "linux2" ]]
+elif [[ "$ACTION" == "windows" ]]
 then
-    ssh -i $SSHKEY -o StrictHostKeyChecking=no ec2-user@$LINUX_2 $2 $3 $4
+    aws ssm start-session --target $WINDOWS_1
 elif [[ "$ACTION" == "win1" ]]
 then
     aws ssm start-session --target $WINDOWS_1
-elif [[ "$ACTION" == "win2" ]]
-then
-    aws ssm start-session --target $WINDOWS_2
 else
     echo "Invalid target specified."
 fi
